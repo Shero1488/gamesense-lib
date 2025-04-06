@@ -27,8 +27,7 @@ local function get_hwid()
     local file_check = file_checker()
     if file_check then
         local hwid = gethwid(system10, file_check, "hexcodes")
-        local key = "hexcodes"
-        return base64.encode(hwid, key)
+        return base64.encode(hwid)
     else
         return nil
     end
