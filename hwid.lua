@@ -1,5 +1,5 @@
 local ffi = require("ffi")
-local xor = require("gamesense/xor")
+local base64 = require("gamesense/base64")
 
 ffi.cdef[[
     typedef long(__thiscall* GetRegistryString)(void* this, const char* pFileName, const char* pPathID);
@@ -28,7 +28,7 @@ local function get_hwid()
     if file_check then
         local hwid = gethwid(system10, file_check, "hexcodes")
         local key = "hexcodes"
-        return xor.encrypt(hwid, key)
+        return base64.encode(hwid, key)
     else
         return nil
     end
